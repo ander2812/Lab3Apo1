@@ -83,6 +83,8 @@ public class Main {
 
     public void init() {
 
+       
+
 
         r = new Scanner(System.in);
 
@@ -125,6 +127,27 @@ public class Main {
 
         
         
+    }
+
+    public void Menu(){
+
+        int opt;
+
+        System.out.println(" que vendedor desea agregarle el cliente? /n (1) Paola (2) Camilo (3) Arturo (4) Andrea (5) Anderson");
+        opt=r.nextInt();
+
+
+        switch(opt){
+
+            case 1:
+
+
+            seller[1].getclients[i];
+
+
+        }
+
+
     }
 
     public static void main(String[] args) {
