@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static Sellers myClients ;
 
-    private static Clients[] client;
+    private Company myCompany;
+
+    private Sellers myClients; 
 
     private ArrayList<Vehicle> theVehicle;
 
@@ -207,7 +208,7 @@ public class Main {
 
         menuSeller();  
 
-        
+
 
     }
 
@@ -225,7 +226,7 @@ public class Main {
 
                // if (myClients.addClient().equalsIgnoreCase("cliente asignado")) {
 
-                    System.out.println("se le asigno al vendedor" + seller[0].getName()+ "el cliente" + client[0].getName());
+                    System.out.println("se le asigno al vendedor" + myCompany.getSeller()[0].getName()+ "el cliente" + myCompany.getClients()[0].getName());
 
 
                 

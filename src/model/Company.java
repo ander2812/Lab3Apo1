@@ -35,10 +35,18 @@ public class Company{
 
     }
 
+
+    public Sellers[] getSeller(){
+
+        return seller;
+
+
+    }
+
     
 
 
-    public void setName(Seller name) {
+    public void setName(String name) {
 
         this.name=name;
         

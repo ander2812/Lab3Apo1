@@ -70,6 +70,11 @@ public class Sellers{
 
     }
 
+    public Clients[] getClients(){
+
+        return client;
+    }
+
    
 
    
