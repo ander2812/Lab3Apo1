@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+
+
 public class Sellers{
 
     private String name;
@@ -10,18 +13,64 @@ public class Sellers{
 
     private int totalSales;
 
+    private Clients[] client;
+
+    private static ArrayList<Clients> misClients;
+
    
 
-    public Sellers (String name, String lastName, String id){
+    public Sellers (String name, String id){
 
         this.name=name;
-        this.lastName=lastName;
         this.id=id;
+
+        misClients=new ArrayList<Clients>();
+
         
+    }
+
+    
+
+
+
+    public String addClient(){
+
+        String msg = "cliente asignado exitosamente";
+
+        for (int i = 0; i<client.length ; i++) {
+
+            if (misClients.size()<10){
+
+                misClients.add(client[i]);
+
+                return msg;
+              
+
+            
+               
+            }else {
+                
+                msg="No asignado escoja otro vendedor";}
+
+            
+            
+        }
+
         
+
+        return msg;
 
 
     }
+
+    public void setClients(Clients[] client){
+
+        this.client=client;
+
+
+    }
+
+   
 
    
 
@@ -65,7 +114,7 @@ public class Sellers{
         
     }
 
-    public int getTotalSales(){
+    public int getTotalSales(){  
 
         return totalSales;
     }

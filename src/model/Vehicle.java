@@ -39,7 +39,7 @@ public class Vehicle{
         
     }
 
-    public String getTotalPrice(){
+    public int getTotalPrice(){
 
         return totalPrice;
     }
@@ -57,7 +57,7 @@ public class Vehicle{
 
     public void setBran(String bran) {
 
-        this.=bran;
+        this.bran=bran;
         
     }
 

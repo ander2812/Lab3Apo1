@@ -10,9 +10,9 @@ public class Company{
 
     private int totalSales;
 
-    private Company[] seller=new Company[5];
+     private Sellers[] seller=new Sellers[4];
 
-    private Sellers[] client;
+    
 
      
 
@@ -20,11 +20,11 @@ public class Company{
 
         name="Concessionaire company" ;
         this.id=id;
-        seller[1]= new Company("Paola","12345");
-        seller[2]= new Company("Camilo","12345");
-        seller[3]= new Company("Arturo","12345");
-        seller[4]= new Company("Andrea","12345");
-        seller[5]= new Company("Anderson","12345");
+        seller[0]= new Sellers("Paola","12345");
+        seller[1]= new Sellers("Camilo","12345");
+        seller[2]= new Sellers("Arturo","12345");
+        seller[3]= new Sellers("Andrea","12345");
+        seller[4]= new Sellers("Anderson","12345");
        
 
         totalProfist=0;
@@ -35,19 +35,10 @@ public class Company{
 
     }
 
-    public void setClients(Sellers[] client) {
-
-        this.client=client;
-        
-    }
-
-    public Sellers[] getClients(){
-
-        return client;
-    }
+    
 
 
-    public void setName(String name) {
+    public void setName(Seller name) {
 
         this.name=name;
         

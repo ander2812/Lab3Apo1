@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Clients{
 
     private String name;
@@ -10,6 +12,8 @@ public class Clients{
 
     private String phoneNumber;
 
+    private ArrayList<Vehicle> theVehicle;
+
 
     public Clients (String name, String lastName, String id, String phoneNumber){
 
@@ -18,8 +22,17 @@ public class Clients{
         this.id=id;
         this.phoneNumber=phoneNumber;
 
+        theVehicle = new ArrayList<Vehicle>();
+
+        
+
 
     }
+
+    public ArrayList<Vehicle> getMyVehicles() {
+        return theVehicle;
+    }
+
 
     public void setName(String name) {
 
@@ -63,6 +76,16 @@ public class Clients{
     public String getPhoneNumber(){
 
         return phoneNumber;
+    }
+
+    public void addVehicle(int totalPrice, int basePrice, String bran, String model, int displacement, int mileaje, boolean newv, String plate){
+
+
+        Vehicle newVehicle = new Vehicle(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate);
+
+        theVehicle.add(newVehicle);
+
+        System.out.println(theVehicle);
     }
 
 

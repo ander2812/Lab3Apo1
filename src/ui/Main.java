@@ -2,11 +2,23 @@ package ui;
 
 import model.*;
 
+import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Main {
 
-    private static Company concessionaire;
+    private static Sellers myClients ;
+
+    private static Clients[] client;
+
+    private ArrayList<Vehicle> theVehicle;
+
+    public Main(){
+
+
+    }
+    
 
      static Scanner r = new Scanner (System.in);
 
@@ -16,6 +28,72 @@ public class Main {
         System.out.println("********************************************************************");
         System.out.println("********************* Car concessionaire S.A ************************");
         System.out.println("********************************************************************\n\n");
+
+    }
+
+    public void  pMenu(){
+
+        int opt;
+
+        System.out.println("ingrese una opcion /n (1) agregar cliente (2) agregar vehiculo");
+        opt=r.nextInt();
+        
+
+        switch (opt) {
+            case 1:
+
+                init();
+               
+
+
+                
+            break;
+
+            case 2:
+
+            System.out.println("cuantos vehiculos desea agregar");
+            opt=r.nextInt();
+
+
+           
+
+                System.out.println("Cual es el precio del vehiculo ?");
+                final int totalPrice  = r.nextInt();
+                System.out.println("Cual es el precio base del vehiculo ?");
+                final int basePrice  = r.nextInt();
+                System.out.println("Cual es la marca del vehiculo ?");
+                final String bran  = r.nextLine();
+                System.out.println("por favor ingrese el modelo del vehiculo ?");
+                final String model = r.nextLine();
+                System.out.println("por favor ingrese el cilindraje del vehiculo ?");
+                final int displacement = r.nextInt();
+                System.out.println("por favor ingrese el kilometraje del vehiculo del vehiculo ?");
+                final int mileaje = r.nextInt();
+                System.out.println("por favor ingrese si el vehiculo es nuevo o usado ?");
+                final boolean newv = r.nextBoolean();
+                System.out.println("por facor ingrese la placa del vehiculo ?");
+                final String plate = r.nextLine();
+
+                r.nextLine();
+
+                 Vehicle newVehicle=new Vehicle(totalPrice,basePrice,bran,model,displacement,mileaje,newv,plate);
+
+                 theVehicle.add(newVehicle);
+                 
+                System.out.println(theVehicle.size());
+
+
+
+
+
+            
+                
+        }
+
+
+        
+
+
 
     }
 
@@ -81,10 +159,10 @@ public class Main {
 
     }
 
+
+    
+
     public void init() {
-
-       
-
 
         r = new Scanner(System.in);
 
@@ -95,68 +173,91 @@ public class Main {
 
         quantity=r.nextInt();
 
-        Sellers client[] = new Sellers[quantity];
+        final Clients client[] = new Clients[quantity];
 
         r.nextLine();
 
-         int numclient = 0;
+        int numclient = 0;
 
-        for (int i=0; i<10; i++) {
+        for (int i = 0; i < client.length; i++) {
 
-            if (AddClient()==true){
-                
-            System.out.println("Cual es el nombre del cliente no. " + (numclient + 1) + "?");
-            String name = r.nextLine();
-            System.out.println("Cual es el Apellido del cliente no. " + (numclient + 1) + "?");
-            String lastName = r.nextLine();
-            System.out.println("Cual es el ID " + (numclient + 1) + "?");
-            String id = r.nextLine();
-            
+            //if (AddClient() == true) {
 
-            client[numclient] = new Sellers(name, lastName, id );
+                System.out.println("Cual es el nombre del cliente no. " + (numclient + 1) + "?");
+                final String name = r.nextLine();
+                System.out.println("Cual es el Apellido del cliente no. " + (numclient + 1) + "?");
+                final String lastName = r.nextLine();
+                System.out.println("Cual es el ID " + (numclient + 1) + "?");
+                final String id = r.nextLine();
+                System.out.println("Cual es el numero telefonico del cliente " + (numclient + 1) + "?");
+                final String phoneNumber = r.nextLine();
 
-            numclient++;
+                client[numclient] = new Clients(name, lastName, id, phoneNumber);
 
-        
-        }else{System.out.println("gracias por utilizar nuestros servicios");}
-            
+                numclient++;
+
+            //} else { 
+
+               // System.out.println("gracias por utilizar nuestros servicios");
+           // }
 
         }
 
-        concessionaire.setClients(client);
+        myClients.setClients(client);
+
+        menuSeller();  
 
         
-        
+
     }
 
-    public void Menu(){
+    public void menuSeller(){
 
         int opt;
 
-        System.out.println(" que vendedor desea agregarle el cliente? /n (1) Paola (2) Camilo (3) Arturo (4) Andrea (5) Anderson");
+        System.out.println("ingrese a que vendedor desea asignarle el cliente /n (1) Paola (2) Camilo (3) Arturo (4) Andrea (5) Anderson ");
+        
         opt=r.nextInt();
 
-
-        switch(opt){
-
+        switch (opt) {
             case 1:
+           
+
+               // if (myClients.addClient().equalsIgnoreCase("cliente asignado")) {
+
+                    System.out.println("se le asigno al vendedor" + seller[0].getName()+ "el cliente" + client[0].getName());
 
 
-            seller[1].getclients[i];
-
+                
+                //} else { 
+                    
+               // }
+                
+            
+            
+            
+                
+            break;
 
         }
 
 
+
     }
 
-    public static void main(String[] args) {
 
-        Main theMain= new Main();
+
+    public static void main(final String[] args) {
+
+        final Main theMain = new Main();
 
         theMain.welcomeMsg();
 
-        theMain.init();
+        theMain.pMenu();
+
+    
+
+        
 
 
     }
