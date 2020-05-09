@@ -33,6 +33,10 @@ public class Clients{
         return theVehicle;
     }
 
+    public void setMyVehicles(ArrayList<Vehicle> theVheicle) {
+        this.theVehicle=theVheicle;
+    }
+
 
     public void setName(String name) {
 

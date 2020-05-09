@@ -10,7 +10,9 @@ public class Company{
 
     private int totalSales;
 
-     private Sellers[] seller=new Sellers[4];
+     private Sellers[] seller=new Sellers[5];
+
+     
 
     
 

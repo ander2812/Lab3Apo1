@@ -18,6 +18,8 @@ public class Vehicle{
 
     private String plate;
 
+    private Docs docs;
+
     public Vehicle (int totalPrice, int basePrice, String bran, String model, int displacement, int mileaje, boolean newv, String plate){
 
         this.totalPrice=totalPrice;
@@ -28,6 +30,8 @@ public class Vehicle{
         this.mileaje=mileaje;
         this.newv=newv;
         this.plate=plate;
+
+        //docs = new Docs(500000,year,image,documetCode);
 
 
 

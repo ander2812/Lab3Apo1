@@ -11,11 +11,9 @@ public class Main {
 
     private Company myCompany;
 
-    private Sellers myClients; 
-
-    private ArrayList<Vehicle> theVehicle;
-
     public Main(){
+
+        myCompany=new Company("Car consesionaire S.A ", "123456789");
 
 
     }
@@ -55,8 +53,15 @@ public class Main {
             System.out.println("cuantos vehiculos desea agregar");
             opt=r.nextInt();
 
+            int numVeicles=0;
 
-           
+            final ArrayList<Vehicle> theVehicle;
+
+            theVehicle = new ArrayList<Vehicle>(opt);
+
+            r.nextLine();
+
+            for (int i = 0; i < opt ; i++) {
 
                 System.out.println("Cual es el precio del vehiculo ?");
                 final int totalPrice  = r.nextInt();
@@ -64,6 +69,7 @@ public class Main {
                 final int basePrice  = r.nextInt();
                 System.out.println("Cual es la marca del vehiculo ?");
                 final String bran  = r.nextLine();
+                r.nextLine();
                 System.out.println("por favor ingrese el modelo del vehiculo ?");
                 final String model = r.nextLine();
                 System.out.println("por favor ingrese el cilindraje del vehiculo ?");
@@ -72,16 +78,37 @@ public class Main {
                 final int mileaje = r.nextInt();
                 System.out.println("por favor ingrese si el vehiculo es nuevo o usado ?");
                 final boolean newv = r.nextBoolean();
-                System.out.println("por facor ingrese la placa del vehiculo ?");
+                System.out.println("por favor ingrese la placa del vehiculo ?");
                 final String plate = r.nextLine();
 
-                r.nextLine();
+               
 
                  Vehicle newVehicle=new Vehicle(totalPrice,basePrice,bran,model,displacement,mileaje,newv,plate);
 
                  theVehicle.add(newVehicle);
+
+                 numVeicles++;
+
                  
-                System.out.println(theVehicle.size());
+
+                
+            }
+
+            myCompany.getSeller()[0].getClients()[0].setMyVehicles(theVehicle);
+
+            for (int j = 0; j < theVehicle.size(); j++) {
+
+                System.out.println("se agregaron los vehiculos "+ myCompany.getSeller()[0].getClients()[0].getMyVehicles().get(j));
+                
+            }
+
+            
+
+            
+
+               
+                 //myCompany.getSeller()[0].getVehicles()[0].setMyVehicles(newVehicle);
+                
 
 
 
@@ -204,15 +231,7 @@ public class Main {
 
         }
 
-        myClients.setClients(client);
-
-        menuSeller();  
-
-
-
-    }
-
-    public void menuSeller(){
+        
 
         int opt;
 
@@ -222,23 +241,68 @@ public class Main {
 
         switch (opt) {
             case 1:
-           
 
-               // if (myClients.addClient().equalsIgnoreCase("cliente asignado")) {
+             myCompany.getSeller()[0].setClients(client);
 
-                    System.out.println("se le asigno al vendedor" + myCompany.getSeller()[0].getName()+ "el cliente" + myCompany.getClients()[0].getName());
+             for (int i = 0; i < client.length; i++) {
 
+                System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[0].getName()+ " el clientes " + myCompany.getSeller()[0].getClients()[i].getName());
+                 
+             }
+
+             break;
+
+            case 2:
+
+            myCompany.getSeller()[1].setClients(client);
+
+            for (int i = 0; i < client.length; i++) {
+
+                System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[1].getName()+ " el cliente " + myCompany.getSeller()[1].getClients()[i].getName());
 
                 
-                //} else { 
-                    
-               // }
-                
+            }
+
             
-            
-            
-                
             break;
+
+            case 3:
+
+             myCompany.getSeller()[2].setClients(client);
+
+             for (int i = 0; i < client.length; i++) {
+
+                System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[2].getName()+ " el cliente " + myCompany.getSeller()[2].getClients()[i].getName());
+                 
+             }
+
+             break;
+
+             case 4:
+
+             myCompany.getSeller()[3].setClients(client);
+
+             for (int i = 0; i < client.length; i++) {
+
+                System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[3].getName()+ " los clientes " + myCompany.getSeller()[3].getClients()[i].getName());
+                 
+             }
+
+             break;
+
+             case 5:
+
+             myCompany.getSeller()[4].setClients(client);
+
+             for (int i = 0; i < client.length; i++) {
+
+                System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[4].getName()+ " los clientes " + myCompany.getSeller()[4].getClients()[i].getName());
+                 
+             }
+
+             break;
+
+
 
         }
 
@@ -246,6 +310,7 @@ public class Main {
 
     }
 
+   
 
 
     public static void main(final String[] args) {
