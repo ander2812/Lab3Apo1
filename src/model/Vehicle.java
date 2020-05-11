@@ -175,13 +175,13 @@ public class Vehicle{
         return newv;
     }
 
-    public void plate(String plate) {
+    public void setPlate(String plate) {
 
         this.plate=plate;
         
     }
 
-    public String plate(){
+    public String getPlate(){
 
         return plate;
     }

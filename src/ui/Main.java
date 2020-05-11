@@ -10,6 +10,10 @@ public class Main {
 
     private Company myCompany;
 
+    ArrayList<Vehicle> theVehicle=new ArrayList<Vehicle>();
+    ArrayList<Vehicle> myVehiclesAdd=new ArrayList<Vehicle>();
+    
+
     public Main() {
 
         myCompany = new Company("Car consesionaire S.A ", "123456789");
@@ -29,89 +33,183 @@ public class Main {
 
     public void pMenu() {
 
+        int resp;
+
+        
+        
+     do {
+
         int opt;
 
-        System.out.println("ingrese una opcion /n (1) agregar cliente (2) agregar vehiculo");
-        opt = r.nextInt();
+         System.out.println("ingrese una opcion /n (1) agregar cliente (2) agregar vehiculo");
+            opt = r.nextInt();
 
-        switch (opt) {
-            case 1:
+            switch (opt) {
+                 case 1:
 
                 init();
 
                 System.out.println("");
 
-                 asigVehiculo();
+                 asigVehiculo(theVehicle);
+
+                 
+
+                 
 
                 break;
 
-            case 2:
+                 case 2:
 
                 addVehicle();
 
                 break;
 
-        }
+            }
+
+            
+            
+            System.out.println("----------gracias por utilizar nuestros servicios-----------\n ingrese la opcion que desea (1) generar informe (2) salir");
+            resp=r.nextInt();
+
+            switch (resp) {
+                case 1:
+
+               
+
+                
+
+                
+
+
+            }
+
+
+
+
+           
+         
+     } while (resp==2);
+         
+
+        
+
+
+
+        
 
     }
 
-    public void asigVehiculo() {
+    public void asigVehiculo(ArrayList<Vehicle> theVehicle) {
 
-        String opt;
+        int opt;
         int opt2;
         int opt3;
         String opt4;
+        String opt5;
 
-        System.out.println("desea asignar un vehiculo a al cliente ?");
-        opt = r.nextLine();
+        System.out.println("desea asignar un vehiculo a al cliente (1) si (2) no ?");
+        opt=r.nextInt();
+        r.nextLine();
 
+        switch (opt) {
+            case 1:
 
-        if (opt.equalsIgnoreCase("si")) {
-
-            r.nextLine();
-
-            System.out.println("ingrese (1) motocicletas (2) carros");
+            System.out.println("ingrese (3) motocicletas (4) carros");
             opt2 = r.nextInt();
 
             r.nextLine();
 
             switch (opt2) {
 
-                case 1:
+                case 3:
+
+                for (int i = 0; i < myCompany.getMyVehicles().size(); i++){
+
+                Vehicle myVehicle=myCompany.getMyVehicles().get(i);
+
+                        if (myVehicle instanceof Motorcicle){
+
+                            Motorcicle motorcicle=(Motorcicle) myVehicle;
+
+                            System.out.println("Motorcycle # " + i);
+                            System.out.println("Marca: " + motorcicle.getBran());
+                            System.out.println("Modelo :" + motorcicle.getModel());
+                            System.out.println("Precio Base: " + motorcicle.getBasePrice());
+                            System.out.println("Cilindraje: " + motorcicle.getDisplacement());
+                            System.out.println("Placa: " + motorcicle.getPlate());
+                            System.out.println("Vehiculo usado?: " + motorcicle.getNew());
+                            System.out.println("El precio total es: " + motorcicle.getTotalPrice());
+                            System.out.println("");
+
+
+                        }
+
+                        }
+
+                    break;
+
+                case 4:
+
+                    for (int i = 0; i < myCompany.getMyVehicles().size(); i++) {
+
+                        Vehicle myVehicle=myCompany.getMyVehicles().get(i);
+
+                        if (myVehicle instanceof Car){
+
+                            Car car=(Car) myVehicle;
+
+                            System.out.println("ingrese el numero del vehiculo que desea asignar");
+
+                            System.out.println("Carro # " + i);
+                            System.out.println("Marca: " + car.getBran());
+                            System.out.println("Modelo :" + car.getModel());
+                            System.out.println("Precio Base: " + car.getBasePrice());
+                            System.out.println("Cilindraje: " + car.getDisplacement());
+                            System.out.println("Placa: " + car.getPlate());
+                            System.out.println("Vehiculo usado?: " + car.getNew());
+                            System.out.println("Numero de puertas: " + car.getDoors());
+                            System.out.println("Ventanas polarizadas: " + car.getPolarized());
+                            System.out.println("Tipo de carro: " + car.getType());
+                            System.out.println("El precio total es: " + car.getTotalPrice());
+                            System.out.println("");
+
+
+                        }
+            
+                        
+            
+                       
+            
+                        
+                       
+                            
+                
+                        
+                        
+                    }
+
+
+                   
+
+                    
 
                     break;
 
                 case 2:
 
-                    System.out.println("ingrese el nombre del cliente");
-                    opt = r.nextLine();
-                    r.nextLine();
+                System.out.println("gracias por utilizar nuestros servicios");
 
-                    System.out.println("ingrese el modelo del vehiculo");
-                    opt3 = r.nextInt();
-                    r.nextLine();
-
-                    System.out.println("ingrese la marca del vehiculo");
-                    opt4 = r.nextLine();
-
-                    for (int i = 0; i < 10 ; i++) {
-
-                        if (myCompany.getClients()[i].getName().equalsIgnoreCase(opt)
-                                && myCompany.getMyVehicles().get(i).getModel() == opt3
-                                && myCompany.getMyVehicles().get(i).getBran().equalsIgnoreCase(opt4)) {
-
-                            System.out.println("se le asigno el vehiculo " + myCompany.getMyVehicles().get(i)
-                                    + " al cliente " + myCompany.getClients()[i]);
-
-                        }
-
-                    }
-
-                    break;
-
-            }
-
+            }   break;
         }
+
+            
+
+            
+
+            
+
+        
 
     }
 
@@ -119,7 +217,7 @@ public class Main {
 
         int opt;
 
-         ArrayList<Vehicle> theVehicle=new ArrayList<Vehicle>();
+         
  
 
         System.out.println("ingrese el tipo de vehiculo \n (1) carro (2)motocicleta");
@@ -188,10 +286,6 @@ public class Main {
                 break;
 
             case 2:
-
-                System.out.println("ingrese el tipo de vehiculo \n (1) carro (2)motocicleta");
-                opt = r.nextInt();
-
                 switch (opt) {
                     case 1:
 
@@ -262,7 +356,7 @@ public class Main {
 
         int quantity;
 
-        System.out.println("Por favor ingrese cuantos clientes desea agregar: \n");
+       System.out.println("Por favor ingrese cuantos clientes desea agregar: \n");
 
         quantity = r.nextInt();
 
@@ -274,22 +368,24 @@ public class Main {
 
         for (int i = 0; i < client.length; i++) {
 
-            System.out.println("Cual es el nombre del cliente no. " + (numclient + 1) + "?");
+            System.out.println("Cual es el nombre del cliente ?");
             final String name = r.nextLine();
-            System.out.println("Cual es el Apellido del cliente no. " + (numclient + 1) + "?");
+            System.out.println("Cual es el Apellido del cliente ?");
             final String lastName = r.nextLine();
             System.out.println("Cual es el ID " + (numclient + 1) + "?");
             final String id = r.nextLine();
-            System.out.println("Cual es el numero telefonico del cliente " + (numclient + 1) + "?");
+            System.out.println("Cual es el numero telefonico del cliente ?");
             final String phoneNumber = r.nextLine();
 
             client[numclient] = new Clients(name, lastName, id, phoneNumber);
 
             numclient++;
 
+            myCompany.getSeller()[i].setClients(client);
+
         }
 
-        myCompany.setClients(client);
+       
 
         
 
@@ -306,20 +402,20 @@ public class Main {
             case 1:
             
 
-                myCompany.getSeller()[0].setMisClients1(client);
+                myCompany.getSeller()[opt].setMisClients1(client);
 
                 for (int i = 0; i < client.length; i++) {
 
-                    System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[0].getName()
-                            + " el clientes " + myCompany.getSeller()[0].getMisClients1()[i].getName());
+                    System.out.println(" se le asigno al vendedor " + myCompany.getSeller()[opt].getName()
+                            + " el clientes " + myCompany.getSeller()[opt].getMisClients1()[i].getName());
 
                 }
 
                 break;
-
+            }
                 
 
-            case 2:
+           /* case 2:
 
                 myCompany.getSeller()[1].setMisClients2(client);
 
@@ -440,14 +536,7 @@ public class Main {
 
 
 
-        }
-
-    }
-
-    public void asignClient(){
-
-        
-
+        }*/
 
     }
 

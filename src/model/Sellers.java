@@ -13,6 +13,8 @@ public class Sellers{
 
     private int totalSales;
 
+    private Clients[] client;
+
     private Clients[] misClients1= new Clients[5];
     private Clients[] misClients2= new Clients[5];
     private Clients[] misClients3= new Clients[5];
@@ -40,6 +42,18 @@ public class Sellers{
 
 
         
+    }
+
+    public void setClients(Clients[] client){
+
+        this.client=client;
+
+
+    }
+
+    public Clients[] getClients(){
+
+        return client;
     }
 
     public void setName(String name) {

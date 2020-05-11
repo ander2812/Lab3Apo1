@@ -16,7 +16,7 @@ public class Company{
 
      private Sellers[] seller=new Sellers[10];
 
-     private Clients[] client;
+     
 
      
 
@@ -54,22 +54,23 @@ public class Company{
 
     public void totalPriceVehicle(){
 
-        seller[0].getMisClients1();
+        
 
         
     }
 
-    public void setClients(Clients[] client){
+    public void myVehiclesAdd(Vehicle myVehicle ){
 
-        this.client=client;
+        //for (int i = 0; i < client.length; i++) {
+            
+        //}
+
+        
 
 
     }
 
-    public Clients[] getClients(){
-
-        return client;
-    }
+    
 
     public ArrayList<Vehicle> getMyVehicles() {
         return theVehicle;
