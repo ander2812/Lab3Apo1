@@ -6,11 +6,11 @@ public class Docs{
 
     private String year;
 
-    private int[][] image;
+    private int image;
 
     private int documentCode;
 
-    public Docs (int price, String year, int[][] image, int documentCode){
+    public Docs (int price, String year, int image, int documentCode){
 
         this.price=price;
         this.year=year;

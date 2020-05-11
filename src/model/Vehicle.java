@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Vehicle{
 
     private int totalPrice;
@@ -8,19 +10,21 @@ public class Vehicle{
 
     private String bran;
 
-    private String model;
+    private int model;
 
     private int displacement;
 
     private int mileaje;
 
-    private boolean newv;
+    private String newv;
 
     private String plate;
 
     private Docs docs;
 
-    public Vehicle (int totalPrice, int basePrice, String bran, String model, int displacement, int mileaje, boolean newv, String plate){
+    private static ArrayList<Car> misCars;
+
+    public Vehicle (int totalPrice, int basePrice, String bran, int model, int displacement, int mileaje, String newv, String plate){
 
         this.totalPrice=totalPrice;
         this.basePrice=basePrice;
@@ -31,7 +35,60 @@ public class Vehicle{
         this.newv=newv;
         this.plate=plate;
 
-        //docs = new Docs(500000,year,image,documetCode);
+        docs = new Docs(0,"",0,0); 
+
+        misCars=new ArrayList<Car>();
+
+
+
+    }
+
+    public void addCar(Car misCars){
+
+       
+
+        
+    }
+
+    public String cDocuments(){
+
+        int[][] code= new int[4][4];
+        String chine,chine2, chine3, chine4, chine5, chine6, chine7, chine8="";
+       
+        int num, num2, num3, num4, num5, num6, num7, num8=0;
+
+        String dCode="";
+
+        num=code[0][0];
+        num2=code[1][0];
+        num3=code[2][0];
+        num4=code[3][0];
+        num5=code[3][0];
+        num6=code[3][1];
+        num7=code[3][2];
+        num8=code[3][3];
+
+        chine=Integer.toString(num);
+        chine2=Integer.toString(num2);
+        chine3=Integer.toString(num3);
+        chine4=Integer.toString(num4);
+        chine5=Integer.toString(num5);
+        chine6=Integer.toString(num6);
+        chine7=Integer.toString(num7);
+        chine8=Integer.toString(num8);
+
+        dCode=chine+chine2+chine3+chine4+chine5+chine6+chine7+chine8;
+
+        return dCode;
+
+        
+       
+
+
+    }
+
+    public void genDocs(){
+
 
 
 
@@ -70,13 +127,13 @@ public class Vehicle{
         return bran;
     }
 
-    public void setModel(String model) {
+    public void setModel(int model) {
 
         this.model=model;
         
     }
 
-    public  String getModel(){
+    public  int getModel(){
 
         return model;
     }
@@ -105,7 +162,7 @@ public class Vehicle{
         return mileaje;
     }
 
-    public void setNew(boolean newv) {
+    public void setNew(String newv) {
 
         this.newv=newv;
 
@@ -113,7 +170,7 @@ public class Vehicle{
         
     }
 
-    public boolean getNew(){
+    public String getNew(){
 
         return newv;
     }
