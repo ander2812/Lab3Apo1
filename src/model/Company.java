@@ -14,6 +14,9 @@ public class Company{
 
     private ArrayList<Vehicle> theVehicle;
 
+    private ArrayList<Vehicle> myVehicleAdd;
+
+
      private Sellers[] seller=new Sellers[10];
 
      
@@ -40,6 +43,12 @@ public class Company{
         seller[9]= new Sellers("Mafe","12345","Cordoba",0);
 
         theVehicle = new ArrayList<Vehicle>();
+        myVehicleAdd=new ArrayList<Vehicle>();
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
+        theVehicle.add(new Car(25000000,35000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
         theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
         theVehicle.add(new Motorcicle (35000000,20000000,"ducati",2019,1600,17000,"nuevo","123456","cross"));
        
@@ -59,16 +68,16 @@ public class Company{
         
     }
 
-    public void myVehiclesAdd(Vehicle myVehicle ){
+    public void myVehiclesAdd(Vehicle myVehicle, int opt3){
 
-        //for (int i = 0; i < client.length; i++) {
+
+                    myVehicleAdd.add(myVehicle);
+
+
+                    System.out.println("prueba");
+                
             
-        //}
-
-        
-
-
-    }
+     }
 
     
 
