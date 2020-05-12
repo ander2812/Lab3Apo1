@@ -1,7 +1,6 @@
 package ui;
 
 import model.*;
-
 import java.util.ArrayList;
 
 import java.util.Scanner;
@@ -13,8 +12,9 @@ public class Main {
 
     ArrayList<Vehicle> theVehicle = new ArrayList<Vehicle>();
     ArrayList<Vehicle> myVehiclesAdd = new ArrayList<Vehicle>();
-    int opt4;
-    int select;
+
+    public int opt5;
+    public int select2;
 
     public Main() {
         myCompany = new Company("Car consesionaire S.A ", "123456789");
@@ -64,7 +64,7 @@ public class Main {
 
                 case 3:
 
-                    genInforme();
+                    genInforme(opt5,select2);
 
                     break;
 
@@ -122,6 +122,7 @@ public class Main {
                 System.out.println("INGRESE EL NUMERO DEL VEHICULO EL CUAL DESEA ASIGNAR");
 
                 int opt3 = r.nextInt();
+                 opt5=opt3;
 
                 myVehiclesAdd.add(myCompany.getMyVehicles().get(opt3));
                 r.nextLine();
@@ -174,9 +175,10 @@ public class Main {
                 System.out.println("INGRESE EL NUMERO DEL VEHICULO EL CUAL DESEA ASIGNAR");
 
                 int opt4 = r.nextInt();
+                opt5=opt4;
                 r.nextLine();
 
-                myVehiclesAdd.add(myCompany.getMyVehicles().get(opt4));
+                myVehiclesAdd.add(myCompany.getMyVehicles().get(opt5));
                 r.nextLine();
 
                 System.out.println("");
@@ -363,8 +365,6 @@ public class Main {
 
         sSeller(client);
 
-        pMenu();
-
     }
 
     public void sSeller(Clients client) {
@@ -379,6 +379,7 @@ public class Main {
 
         }
         int select = r.nextInt();
+        select2=select;
 
         if (myCompany.getSeller()[select].canClients()) {
             myCompany.getSeller()[select].addClient(client);
@@ -392,19 +393,20 @@ public class Main {
         System.out.println(" ");
     }
 
-    public void genInforme() {
+    public void genInforme(int opt5, int select2) {
 
         System.out.println("EL VENDEDOR QUE LO ATENDIO ES: ");
 
         for (int i = 0; i < myCompany.getSeller().length; i++) {
 
-            Sellers mySeller = myCompany.getSeller()[select];
+            Sellers mySeller = myCompany.getSeller()[select2];
 
             if (mySeller.getMisClients().size() > 0) {
 
-                System.out.println("vendedor #: " + i);
+                System.out.println("vendedor #: " + select2);
                 System.out.println("Nombre: " + mySeller.getName());
                 System.out.println("Apellido: " + mySeller.getLastName());
+                System.out.println(" ");
 
                 System.out.println("EL CLIENTE ES:");
 
@@ -417,17 +419,18 @@ public class Main {
                     System.out.println("Apellido :" + client.getLastName());
                     System.out.println("ID: " + client.getId());
                     System.out.println("Telefono: " + client.getPhoneNumber());
-                    System.out.println("EL VEHICULO ES:");
+                    System.out.println(" ");
+                    System.out.println("EL VEHICULO ES:"); 
 
                     for (int z = 0; z < myCompany.getMyVehicles().size(); z++) {
 
-                        Vehicle myVehicle = myCompany.getMyVehicles().get(opt4);
+                        Vehicle myVehicle = myCompany.getMyVehicles().get(opt5);
 
                         if (myVehicle instanceof Car) {
 
                             Car car = (Car) myVehicle;
 
-                            System.out.println("Carro # " + i);
+                            System.out.println("Carro # " + opt5); 
                             System.out.println("Marca: " + car.getBran());
                             System.out.println("Modelo :" + car.getModel());
                             System.out.println("Precio Base: " + car.getBasePrice());
@@ -447,7 +450,7 @@ public class Main {
 
                             Motorcicle motorcicle = (Motorcicle) myVehicle;
     
-                            System.out.println("Motorcycle # " + i);
+                            System.out.println("Motorcycle # " + opt5);
                             System.out.println("Marca: " + motorcicle.getBran());
                             System.out.println("Modelo :" + motorcicle.getModel());
                             System.out.println("Precio Base: " + motorcicle.getBasePrice());

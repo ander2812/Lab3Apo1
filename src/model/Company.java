@@ -144,6 +144,14 @@ public class Company{
         return totalSales;
     }
 
+    public ArrayList<Vehicle> getMyVehicleAdd() {
+        return myVehicleAdd;
+    }
+
+    public void setMyVehicleAdd(ArrayList<Vehicle> myVehicleAdd) {
+        this.myVehicleAdd = myVehicleAdd;
+    }
+
 
 
 
