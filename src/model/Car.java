@@ -9,9 +9,9 @@ public class Car extends Vehicle{
 
      
 
-    public Car(int totalPrice, int basePrice, String bran, int model, int displacement, int mileaje, String newv, String plate, int doors, String typeOfCar, String polarized ) {
+    public Car(double totalPrice, double basePrice, String bran, int model, int displacement, int mileaje, String newv, String plate, int doors, String typeOfCar, String polarized, String type ) {
 
-        super(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate);
+        super(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, type);
 
         this.doors=doors;
 
@@ -29,11 +29,11 @@ public class Car extends Vehicle{
         this.doors = doors;
     }
 
-    public String getType() {
+    public String getTypeOfCar() {
         return typeOfCar;
     }
 
-    public void setType(String typeOfCar) {
+    public void setTypeOfCar(String typeOfCar) {
         this.typeOfCar = typeOfCar;
     }
 

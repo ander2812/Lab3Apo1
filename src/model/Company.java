@@ -44,12 +44,12 @@ public class Company{
 
         theVehicle = new ArrayList<Vehicle>();
         myVehicleAdd=new ArrayList<Vehicle>();
-        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
-        theVehicle.add(new Car(25000000,35000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
-        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
-        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
-        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
-        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"camioneta","si"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"gasolina","si","camioneta"));
+        theVehicle.add(new Car(25000000,35000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"electrico","si","sedan"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"hibrido","si","sedan"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"gasolina","si","camioneta"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"gasolina","si","camioneta"));
+        theVehicle.add(new Car(25000000,20000000,"chevrolet",2019,1600,17000,"nuevo","12345",4,"gasolina","si","camioneta"));
         theVehicle.add(new Motorcicle (35000000,20000000,"ducati",2019,1600,17000,"nuevo","123456","cross"));
        
 
@@ -66,6 +66,88 @@ public class Company{
         
 
         
+    }
+
+    public void calculateTotalp(Vehicle myVehicle, Car car, Motorcicle motorcicle) {
+
+        double calculateTotalp;
+
+        if (car.getTypeOfCar().equalsIgnoreCase("electrico")) {
+
+            if (car.getNew().equalsIgnoreCase("nuevo")) {
+
+                calculateTotalp = ((myVehicle.getBasePrice() * 0.2) + myVehicle.getBasePrice());
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+            if (car.getNew().equalsIgnoreCase("usado")) {
+
+                calculateTotalp = (((myVehicle.getBasePrice() * 0.2) + myVehicle.getBasePrice()) * 0.10) + ((myVehicle.getBasePrice() * 0.2) + myVehicle.getBasePrice());
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+        }
+
+        if (car.getTypeOfCar().equalsIgnoreCase("hibrido")) {
+
+            if (car.getNew().equalsIgnoreCase("nuevo")) {
+
+                calculateTotalp = ((myVehicle.getBasePrice() * 0.15) + myVehicle.getBasePrice());
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+            if (car.getNew().equalsIgnoreCase("usado")) {
+
+                calculateTotalp = (((myVehicle.getBasePrice() * 0.15) + myVehicle.getBasePrice()) * 0.10) - (myVehicle.getBasePrice() * 0.15) + myVehicle.getBasePrice();
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+        }
+
+        if (car.getTypeOfCar().equalsIgnoreCase("gasolina")) {
+
+            if (car.getNew().equalsIgnoreCase("nuevo")) {
+
+                calculateTotalp = myVehicle.getBasePrice();
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+            if (car.getNew().equalsIgnoreCase("usado")) {
+
+                calculateTotalp = ((myVehicle.getBasePrice() * 0.10) - myVehicle.getBasePrice());
+
+                myVehicle.setTotalPrice(calculateTotalp);
+
+            }
+
+        }
+
+        if (motorcicle.getNew().equalsIgnoreCase("usado")) {
+
+            calculateTotalp = (((myVehicle.getBasePrice() * 0.04) + myVehicle.getBasePrice()) * 0.02) - ((myVehicle.getBasePrice() * 0.04) + myVehicle.getBasePrice());
+
+            myVehicle.setTotalPrice(calculateTotalp);
+
+        }
+
+        if (car.getNew().equalsIgnoreCase("nuevo")) {
+
+            calculateTotalp = ((myVehicle.getBasePrice() * 0.04) + myVehicle.getBasePrice());
+
+            myVehicle.setTotalPrice(calculateTotalp);
+
+        }
+
     }
 
     public void myVehiclesAdd(Vehicle myVehicle, int opt3){

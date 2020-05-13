@@ -156,14 +156,16 @@ public class Main {
 
                         System.out.println("Carro # " + i);
                         System.out.println("Marca: " + car.getBran());
+                        System.out.println(":tipo de carro " + car.getType());
                         System.out.println("Modelo :" + car.getModel());
+                        System.out.println("tipo de carro :" + car.getTypeOfCar());
                         System.out.println("Precio Base: " + car.getBasePrice());
                         System.out.println("Cilindraje: " + car.getDisplacement());
                         System.out.println("Placa: " + car.getPlate());
                         System.out.println("Vehiculo usado?: " + car.getNew());
                         System.out.println("Numero de puertas: " + car.getDoors());
                         System.out.println("Ventanas polarizadas: " + car.getPolarized());
-                        System.out.println("Tipo de carro: " + car.getType());
+                        System.out.println("Tipo de combustible: " + car.getTypeOfCar());
                         System.out.println("El precio total es: " + car.getTotalPrice());
                         System.out.println(" ");
                         
@@ -251,11 +253,14 @@ public class Main {
                     r.nextLine();
 
                     System.out
-                            .println("por favor ingrese el tipo de vehiculo carro/camioneta " + (numVeicles + 1) + "?");
+                            .println("por favor ingrese el tipo de combustible hibrido/gasolina/electrico " + (numVeicles + 1) + "?");
                     final String typeOfCar = r.nextLine();
 
-                    Car car = new Car(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, doors,
-                            typeOfCar, polarized);
+                    System.out
+                            .println("por favor ingrese el tipo de vehiculo carro/camioneta " + (numVeicles + 1) + "?");
+                    final String type = r.nextLine();
+
+                    Car car = new Car(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, doors, typeOfCar, polarized, type);
 
                     theVehicle.add(car);
 
@@ -287,9 +292,9 @@ public class Main {
                         for (int i = 0; i < opt; i++) {
 
                             System.out.println("Cual es el precio del vehiculo " + (numVeicles2 + 1) + "?");
-                            final int totalPrice = r.nextInt();
+                            final double totalPrice = r.nextDouble();
                             System.out.println("Cual es el precio base del vehiculo " + (numVeicles2 + 1) + "?");
-                            final int basePrice = r.nextInt();
+                            final double basePrice = r.nextDouble();
                             System.out.println("Cual es la marca del vehiculo " + (numVeicles2 + 1) + "?");
                             final String bran = r.nextLine();
                             r.nextLine();
@@ -310,10 +315,9 @@ public class Main {
                             final String plate = r.nextLine();
                             System.out.println("por favor ingrese el tipo de vehiculo cross/standard/deportiva/scooter "
                                     + (numVeicles2 + 1) + "?");
-                            final String typeMotorcicle = r.nextLine();
+                            final String type = r.nextLine();
 
-                            Motorcicle motorcycle = new Motorcicle(totalPrice, basePrice, bran, model, displacement,
-                                    mileaje, newv, typeMotorcicle, plate);
+                            Motorcicle motorcycle = new Motorcicle(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, type);
 
                             theVehicle.add(motorcycle);
 
@@ -397,7 +401,7 @@ public class Main {
 
         System.out.println("EL VENDEDOR QUE LO ATENDIO ES: ");
 
-        for (int i = 0; i < myCompany.getSeller().length; i++) {
+        for (int i = 0; i < myCompany.getSeller()[i].getMisClients().size(); i++) {
 
             Sellers mySeller = myCompany.getSeller()[select2];
 
@@ -422,9 +426,11 @@ public class Main {
                     System.out.println(" ");
                     System.out.println("EL VEHICULO ES:"); 
 
-                    for (int z = 0; z < myCompany.getMyVehicles().size(); z++) {
+                    for (int z = 0; z < myCompany.getSeller()[i].getMisClients().size(); z++) {
 
                         Vehicle myVehicle = myCompany.getMyVehicles().get(opt5);
+
+                        totalPrice(myVehicle, car, motorcicle);
 
                         if (myVehicle instanceof Car) {
 
@@ -432,6 +438,7 @@ public class Main {
 
                             System.out.println("Carro # " + opt5); 
                             System.out.println("Marca: " + car.getBran());
+                            System.out.println(":tipo de carro " + car.getType());
                             System.out.println("Modelo :" + car.getModel());
                             System.out.println("Precio Base: " + car.getBasePrice());
                             System.out.println("Cilindraje: " + car.getDisplacement());
@@ -439,7 +446,7 @@ public class Main {
                             System.out.println("Vehiculo usado?: " + car.getNew());
                             System.out.println("Numero de puertas: " + car.getDoors());
                             System.out.println("Ventanas polarizadas: " + car.getPolarized());
-                            System.out.println("Tipo de carro: " + car.getType());
+                            System.out.println("Tipo de combustible: " + car.getTypeOfCar());
                             System.out.println("El precio total es: " + car.getTotalPrice());
                             System.out.println("");
 
@@ -471,6 +478,27 @@ public class Main {
             }
 
         }
+
+    }
+
+    public void totalPrice(Vehicle myVehicle, Car car, Motorcicle motorcicle){
+
+        if (myVehicle instanceof Car) {
+
+            myCompany.calculateTotalp(myVehicle, car, motorcicle);
+
+            
+
+
+        }
+
+        if (myVehicle instanceof Motorcicle) {
+
+            myCompany.calculateTotalp(myVehicle, car, motorcicle);
+
+
+        }
+
 
     }
 
