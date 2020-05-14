@@ -17,7 +17,7 @@ public class Car extends Vehicle{
 
         this.typeOfCar=typeOfCar;
 
-        this.polarized=polarized;
+        this.polarized=polarized;  
 
     }
 

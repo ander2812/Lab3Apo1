@@ -12,6 +12,8 @@ public class Clients{
 
     private String phoneNumber;
 
+    ArrayList<Vehicle> theVehicle = new ArrayList<>();
+
     
 
     public Clients (String name, String lastName, String id, String phoneNumber){
@@ -72,6 +74,14 @@ public class Clients{
     public String getPhoneNumber(){
 
         return phoneNumber;
+    }
+
+    public ArrayList<Vehicle> getTheVehicle() {
+        return theVehicle;
+    }
+
+    public void setTheVehicle(ArrayList<Vehicle> theVehicle) {
+        this.theVehicle = theVehicle;
     }
 
 

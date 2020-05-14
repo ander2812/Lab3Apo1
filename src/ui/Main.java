@@ -13,9 +13,6 @@ public class Main {
     ArrayList<Vehicle> theVehicle = new ArrayList<Vehicle>();
     ArrayList<Vehicle> myVehiclesAdd = new ArrayList<Vehicle>();
 
-    public int opt5;
-    public int select2;
-
     public Main() {
         myCompany = new Company("Car consesionaire S.A ", "123456789");
         welcomeMsg();
@@ -43,44 +40,40 @@ public class Main {
 
         int opt;
 
-        do {
+        System.out.println(
+                "INGRESE UNA OPCION \n\n (1) agregar cliente (2) agregar vehiculo (3) ver registros (4) salir");
+        opt = r.nextInt();
 
-            System.out.println(
-                    "INGRESE UNA OPCION \n\n (1) agregar cliente (2) agregar vehiculo (3) ver registros (4) salir");
-            opt = r.nextInt();
+        switch (opt) {
+            case 1:
 
-            switch (opt) {
-                case 1:
+                init();
 
-                    init();
+                break;
 
-                    break;
+            case 2:
 
-                case 2:
+                addVehicle();
 
-                    addVehicle();
+                break;
 
-                    break;
+            case 3:
 
-                case 3:
+                genInforme();
 
-                    genInforme(opt5,select2);
+                break;
 
-                    break;
+            case 4:
+                System.out.println(
+                        "-----------------------gracias por utilizar nuestros servicios-------------------------------");
 
-                case 4:
-                    System.out.println(
-                            "-----------------------gracias por utilizar nuestros servicios-------------------------------");
+                break;
 
-                    break;
-
-            }
-
-        } while (opt != 4);
+        }
 
     }
 
-    public void asigVehiculo(ArrayList<Vehicle> theVehicle) {
+    public void asigVehiculo(ArrayList<Vehicle> myVehiclesAdd) {
         int opt2;
 
         System.out.println(" ");
@@ -97,9 +90,9 @@ public class Main {
 
             case 1:
 
-                for (int i = 0; i < myCompany.getMyVehicles().size(); i++) {
+                for (int i = 0; i < myCompany.getTheVehicle().size(); i++) {
 
-                    Vehicle myVehicle = myCompany.getMyVehicles().get(i);
+                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
 
                     if (myVehicle instanceof Motorcicle) {
 
@@ -122,9 +115,8 @@ public class Main {
                 System.out.println("INGRESE EL NUMERO DEL VEHICULO EL CUAL DESEA ASIGNAR");
 
                 int opt3 = r.nextInt();
-                 opt5=opt3;
 
-                myVehiclesAdd.add(myCompany.getMyVehicles().get(opt3));
+                myVehiclesAdd.add(myCompany.getTheVehicle().get(opt3));
                 r.nextLine();
 
                 System.out.println("");
@@ -142,13 +134,11 @@ public class Main {
 
             case 2:
 
-                
-
                 System.out.println("");
 
-                for (int i = 0; i < myCompany.getMyVehicles().size(); i++) {
+                for (int i = 0; i < myCompany.getTheVehicle().size(); i++) {
 
-                    Vehicle myVehicle = myCompany.getMyVehicles().get(i);
+                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
 
                     if (myVehicle instanceof Car) {
 
@@ -168,7 +158,6 @@ public class Main {
                         System.out.println("Tipo de combustible: " + car.getTypeOfCar());
                         System.out.println("El precio total es: " + car.getTotalPrice());
                         System.out.println(" ");
-                        
 
                     }
 
@@ -177,10 +166,9 @@ public class Main {
                 System.out.println("INGRESE EL NUMERO DEL VEHICULO EL CUAL DESEA ASIGNAR");
 
                 int opt4 = r.nextInt();
-                opt5=opt4;
                 r.nextLine();
 
-                myVehiclesAdd.add(myCompany.getMyVehicles().get(opt5));
+                myVehiclesAdd.add(myCompany.getTheVehicle().get(opt4));
                 r.nextLine();
 
                 System.out.println("");
@@ -197,10 +185,6 @@ public class Main {
                 break;
 
         }
-
-    }
-
-    public void interestedVehicle() {
 
     }
 
@@ -252,90 +236,102 @@ public class Main {
 
                     r.nextLine();
 
-                    System.out
-                            .println("por favor ingrese el tipo de combustible hibrido/gasolina/electrico " + (numVeicles + 1) + "?");
+                    System.out.println("por favor ingrese el tipo de combustible hibrido/gasolina/electrico "
+                            + (numVeicles + 1) + "?");
                     final String typeOfCar = r.nextLine();
 
                     System.out
                             .println("por favor ingrese el tipo de vehiculo carro/camioneta " + (numVeicles + 1) + "?");
                     final String type = r.nextLine();
 
-                    Car car = new Car(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, doors, typeOfCar, polarized, type);
+                    Car cars = new Car(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, doors,
+                            typeOfCar, polarized, type);
 
-                    theVehicle.add(car);
+                    theVehicle.add(cars);
 
-                    numVeicles++;
+                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
 
-                }
+                    if (myVehicle instanceof Car) {
 
-                myCompany.setMyVehicles(theVehicle);
+                        cars = (Car) myVehicle;
 
-                for (int j = 0; j < theVehicle.size(); j++) {
+                        System.out.println("Carro # " + i);
+                        System.out.println("Marca: " + cars.getBran());
+                        System.out.println(":tipo de carro " + cars.getType());
+                        System.out.println("Modelo :" + cars.getModel());
+                        System.out.println("tipo de carro :" + cars.getTypeOfCar());
+                        System.out.println("Precio Base: " + cars.getBasePrice());
+                        System.out.println("Cilindraje: " + cars.getDisplacement());
+                        System.out.println("Placa: " + cars.getPlate());
+                        System.out.println("Vehiculo usado?: " + cars.getNew());
+                        System.out.println("Numero de puertas: " + cars.getDoors());
+                        System.out.println("Ventanas polarizadas: " + cars.getPolarized());
+                        System.out.println("Tipo de combustible: " + cars.getTypeOfCar());
+                        System.out.println("El precio total es: " + cars.getTotalPrice());
+                        System.out.println(" ");
 
-                    System.out.println("se agregaron los vehiculos \n " + myCompany.getMyVehicles().get(j));
+                    }
 
                 }
 
                 break;
 
             case 2:
-                switch (opt) {
-                    case 1:
 
-                        System.out.println("cuantos vehiculos desea agregar");
-                        opt = r.nextInt();
+                System.out.println("cuantos vehiculos desea agregar");
+                opt = r.nextInt();
 
-                        int numVeicles2 = 0;
+                int numVeicles2 = 0;
 
-                        r.nextLine();
+                r.nextLine();
 
-                        for (int i = 0; i < opt; i++) {
+                for (int i = 0; i < opt; i++) {
 
-                            System.out.println("Cual es el precio del vehiculo " + (numVeicles2 + 1) + "?");
-                            final double totalPrice = r.nextDouble();
-                            System.out.println("Cual es el precio base del vehiculo " + (numVeicles2 + 1) + "?");
-                            final double basePrice = r.nextDouble();
-                            System.out.println("Cual es la marca del vehiculo " + (numVeicles2 + 1) + "?");
-                            final String bran = r.nextLine();
-                            r.nextLine();
-                            System.out.println(
-                                    "por favor ingrese el modelo del vehiculo un numero " + (numVeicles2 + 1) + "?");
-                            final int model = r.nextInt();
-                            System.out
-                                    .println("por favor ingrese el cilindraje del vehiculo " + (numVeicles2 + 1) + "?");
-                            final int displacement = r.nextInt();
-                            System.out.println("por favor ingrese el kilometraje del vehiculo del vehiculo "
-                                    + (numVeicles2 + 1) + "?");
-                            final int mileaje = r.nextInt();
-                            System.out.println(
-                                    "por favor ingrese si el vehiculo es nuevo o usado " + (numVeicles2 + 1) + "?");
-                            final String newv = r.nextLine();
-                            r.nextLine();
-                            System.out.println("por favor ingrese la placa del vehiculo " + (numVeicles2 + 1) + "?");
-                            final String plate = r.nextLine();
-                            System.out.println("por favor ingrese el tipo de vehiculo cross/standard/deportiva/scooter "
-                                    + (numVeicles2 + 1) + "?");
-                            final String type = r.nextLine();
+                    System.out.println("Cual es el precio del vehiculo " + (numVeicles2 + 1) + "?");
+                    final double totalPrice = r.nextDouble();
+                    System.out.println("Cual es el precio base del vehiculo " + (numVeicles2 + 1) + "?");
+                    final double basePrice = r.nextDouble();
+                    System.out.println("Cual es la marca del vehiculo " + (numVeicles2 + 1) + "?");
+                    final String bran = r.nextLine();
+                    r.nextLine();
+                    System.out.println("por favor ingrese el modelo del vehiculo un numero " + (numVeicles2 + 1) + "?");
+                    final int model = r.nextInt();
+                    System.out.println("por favor ingrese el cilindraje del vehiculo " + (numVeicles2 + 1) + "?");
+                    final int displacement = r.nextInt();
+                    System.out.println(
+                            "por favor ingrese el kilometraje del vehiculo del vehiculo " + (numVeicles2 + 1) + "?");
+                    final int mileaje = r.nextInt();
+                    System.out.println("por favor ingrese si el vehiculo es nuevo o usado " + (numVeicles2 + 1) + "?");
+                    final String newv = r.nextLine();
+                    r.nextLine();
+                    System.out.println("por favor ingrese la placa del vehiculo " + (numVeicles2 + 1) + "?");
+                    final String plate = r.nextLine();
+                    System.out.println("por favor ingrese el tipo de vehiculo cross/standard/deportiva/scooter "
+                            + (numVeicles2 + 1) + "?");
+                    final String type = r.nextLine();
 
-                            Motorcicle motorcycle = new Motorcicle(totalPrice, basePrice, bran, model, displacement, mileaje, newv, plate, type);
+                    Motorcicle motorcycles = new Motorcicle(totalPrice, basePrice, bran, model, displacement, mileaje,
+                            newv, plate, type);
 
-                            theVehicle.add(motorcycle);
+                    theVehicle.add(motorcycles);
 
-                            numVeicles2++;
+                        Vehicle myVehicle1 = myCompany.getTheVehicle().get(i);
+
+                        if (myVehicle1 instanceof Motorcicle) {
+
+                            motorcycles = (Motorcicle) myVehicle1;
+
+                            System.out.println("Motorcycle # " + i);
+                            System.out.println("Marca: " + motorcycles.getBran());
+                            System.out.println("Modelo :" + motorcycles.getModel());
+                            System.out.println("Precio Base: " + motorcycles.getBasePrice());
+                            System.out.println("Cilindraje: " + motorcycles.getDisplacement());
+                            System.out.println("Placa: " + motorcycles.getPlate());
+                            System.out.println("Vehiculo usado?: " + motorcycles.getNew());
+                            System.out.println("El precio total es: " + motorcycles.getTotalPrice());
+                            System.out.println("");
 
                         }
-
-                        myCompany.setMyVehicles(theVehicle);
-
-                        for (int j = 0; j < theVehicle.size(); j++) {
-
-                            Vehicle e = theVehicle.get(j);
-
-                            System.out.println(e.getBran());
-
-                        }
-
-                        break;
 
                 }
 
@@ -363,7 +359,7 @@ public class Main {
 
         Clients client = new Clients(name, lastName, id, phoneNumber);
 
-        asigVehiculo(theVehicle);
+        asigVehiculo(client.getTheVehicle());
 
         System.out.println("SELECCIONE EL NUMERO DEL VENDEDOR QUE LO ATENDIO");
 
@@ -383,12 +379,11 @@ public class Main {
 
         }
         int select = r.nextInt();
-        select2=select;
 
         if (myCompany.getSeller()[select].canClients()) {
             myCompany.getSeller()[select].addClient(client);
         } else {
-            System.out.println("Este vendedor no puede tener más clientes, seleccione otro");
+            System.out.println("este vendedor ya tiene su cupo maximo de clientes");
             sSeller(client);
         }
 
@@ -397,17 +392,17 @@ public class Main {
         System.out.println(" ");
     }
 
-    public void genInforme(int opt5, int select2) {
+    public void genInforme() {
 
         System.out.println("EL VENDEDOR QUE LO ATENDIO ES: ");
 
         for (int i = 0; i < myCompany.getSeller()[i].getMisClients().size(); i++) {
 
-            Sellers mySeller = myCompany.getSeller()[select2];
+            Sellers mySeller = myCompany.getSeller()[i];
 
             if (mySeller.getMisClients().size() > 0) {
 
-                System.out.println("vendedor #: " + select2);
+                System.out.println("vendedor #: " + i);
                 System.out.println("Nombre: " + mySeller.getName());
                 System.out.println("Apellido: " + mySeller.getLastName());
                 System.out.println(" ");
@@ -416,7 +411,7 @@ public class Main {
 
                 for (int j = 0; j < mySeller.getMisClients().size(); j++) {
 
-                    Clients client = mySeller.getMisClients().get(j);
+                    Clients client = mySeller.getMisClients().get(i);
 
                     System.out.println("client # " + i);
                     System.out.println("Nombre: " + client.getName());
@@ -424,19 +419,17 @@ public class Main {
                     System.out.println("ID: " + client.getId());
                     System.out.println("Telefono: " + client.getPhoneNumber());
                     System.out.println(" ");
-                    System.out.println("EL VEHICULO ES:"); 
+                    System.out.println("EL VEHICULO ES:");
 
-                    for (int z = 0; z < myCompany.getSeller()[i].getMisClients().size(); z++) {
+                    for (int z = 0; z < client.getTheVehicle().size(); z++) {
 
-                        Vehicle myVehicle = myCompany.getMyVehicles().get(opt5);
-
-                        totalPrice(myVehicle, car, motorcicle);
+                        Vehicle myVehicle = client.getTheVehicle().get(i);
 
                         if (myVehicle instanceof Car) {
 
                             Car car = (Car) myVehicle;
 
-                            System.out.println("Carro # " + opt5); 
+                            System.out.println("Carro # " + i);
                             System.out.println("Marca: " + car.getBran());
                             System.out.println(":tipo de carro " + car.getType());
                             System.out.println("Modelo :" + car.getModel());
@@ -450,14 +443,25 @@ public class Main {
                             System.out.println("El precio total es: " + car.getTotalPrice());
                             System.out.println("");
 
+                            System.out.println("quiere comprar el vehiculo");
+
+                            String resp = r.nextLine();
+
+                            r.nextLine();
+
+                            if (resp.equalsIgnoreCase("si")) {
+
+                                System.out.println("el valor a pagar es " + car.getTotalPrice());
+                            }
+
                         }
                         System.out.println(" ");
 
                         if (myVehicle instanceof Motorcicle) {
 
                             Motorcicle motorcicle = (Motorcicle) myVehicle;
-    
-                            System.out.println("Motorcycle # " + opt5);
+
+                            System.out.println("Motorcycle # " + i);
                             System.out.println("Marca: " + motorcicle.getBran());
                             System.out.println("Modelo :" + motorcicle.getModel());
                             System.out.println("Precio Base: " + motorcicle.getBasePrice());
@@ -466,40 +470,26 @@ public class Main {
                             System.out.println("Vehiculo usado?: " + motorcicle.getNew());
                             System.out.println("El precio total es: " + motorcicle.getTotalPrice());
                             System.out.println("");
-    
+
+                            System.out.println("quiere comprar el vehiculo ?");
+
+                            String respuesta = r.nextLine();
+
+                            r.nextLine();
+
+                            if (respuesta.equalsIgnoreCase("si")) {
+
+                                System.out.println("el valor a pagar es " + motorcicle.getTotalPrice());
+                            }
+
                         }
-
-
 
                     }
 
                 }
 
             }
-
         }
-
-    }
-
-    public void totalPrice(Vehicle myVehicle, Car car, Motorcicle motorcicle){
-
-        if (myVehicle instanceof Car) {
-
-            myCompany.calculateTotalp(myVehicle, car, motorcicle);
-
-            
-
-
-        }
-
-        if (myVehicle instanceof Motorcicle) {
-
-            myCompany.calculateTotalp(myVehicle, car, motorcicle);
-
-
-        }
-
-
     }
 
 }
