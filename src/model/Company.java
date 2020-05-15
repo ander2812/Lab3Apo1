@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Company {
+public class Company{
 
     private String name;
 
@@ -12,29 +12,38 @@ public class Company {
 
     private int totalSales;
 
-     ArrayList<Vehicle> theVehicle;
+    private ArrayList<Vehicle> theVehicle;
 
-    ArrayList<Vehicle> myVehicleAdd;
+    private ArrayList<Vehicle> myVehicleAdd;
 
-    private Sellers[] seller = new Sellers[10];
 
-    public Company(String name, String id) {
+     private Sellers[] seller=new Sellers[10];
 
-        this.name = name;
-        this.id = id;
-        seller[0] = new Sellers("Paola", "12345", "Osorio", 0);
-        seller[1] = new Sellers("Camilo", "12345", "Charro", 0);
-        seller[2] = new Sellers("Arturo", "12345", "Rueda", 0);
-        seller[3] = new Sellers("Andrea", "12345", "Osorio", 0);
-        seller[4] = new Sellers("Anderson", "12345", "Rueda", 0);
-        seller[5] = new Sellers("Carlos", "12345", "Rueda", 0);
-        seller[6] = new Sellers("Joe", "12345", "The Champion", 0);
-        seller[7] = new Sellers("Juan", "12345", "Reyes", 0);
-        seller[8] = new Sellers("Esteban", "12345", "Yusunguaira", 0);
-        seller[9] = new Sellers("Mafe", "12345", "Cordoba", 0);
+     
+
+     
+
+    
+
+     
+
+    public Company (String name, String id){
+
+        this.name=name;
+        this.id=id;
+        seller[0]= new Sellers("Paola","12345","Osorio",0);
+        seller[1]= new Sellers("Camilo","12345", "Charro",0);
+        seller[2]= new Sellers("Arturo","12345","Rueda",0);
+        seller[3]= new Sellers("Andrea","12345", "Osorio",0);
+        seller[4]= new Sellers("Anderson","12345", "Rueda",0);
+        seller[5]= new Sellers("Carlos","12345", "Rueda",0);
+        seller[6]= new Sellers("Joe","12345","The Champion",0 );
+        seller[7]= new Sellers("Juan","12345", "Reyes",0);
+        seller[8]= new Sellers("Esteban","12345", "Yusunguaira",0);
+        seller[9]= new Sellers("Mafe","12345","Cordoba",0);
 
         theVehicle = new ArrayList<Vehicle>();
-        myVehicleAdd = new ArrayList<Vehicle>();
+        myVehicleAdd=new ArrayList<Vehicle>();
         theVehicle.add(new Car(25000000, 20000000, "chevrolet", 2019, 1600, 17000, "nuevo", "12345", 4, "gasolina",
                 "si", "camioneta"));
         theVehicle.add(
@@ -48,16 +57,34 @@ public class Company {
         theVehicle.add(new Car(25000000, 20000000, "toyota", 2019, 1600, 17000, "nuevo", "12345", 4, "gasolina", "si",
                 "camioneta"));
         theVehicle.add(new Motorcicle(35000000, 20000000, "ducati", 2019, 1600, 17000, "nuevo", "123456", "cross"));
+       
 
-        totalProfist = 0;
-        totalSales = 0;
+        totalProfist=0;
+        totalSales=0;
+
+       
+
 
     }
 
-    public void totalPriceVehicle() {
+    /**
+	
+	*this method modifies the total price of the vehicles
 
-    }
+	*<b>pre: </b> 
+	
+	*<b>post: total price changed
+	
+	*@param total price != null
+	
+	*@author Anderson Rueda.
+	
+	*/
 
+
+    
+
+    
     public void calculateTotalpCar(Vehicle myVehicle, Car car, Motorcicle motorcicle) {
 
         double calculateTotalp;
@@ -151,82 +178,269 @@ public class Company {
 
     }
 
-    public Sellers[] getSeller() {
+    /**
+	
+	*this method returns the arraylist of the vehicles
+
+	*<b>pre: </b> 
+	
+	*<b>post: return vehicle add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+    
+
+    public ArrayList<Vehicle> getMyVehicles() {
+        return theVehicle;
+    }
+
+    /**
+	
+	*this method modifies the arraylist of the vehicles
+
+	*<b>pre: </b> 
+	
+	*<b>post: customer arraylist changed
+	
+	*@param arraylist != null
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+    public void setMyVehicles(ArrayList<Vehicle> theVheicle) {
+        this.theVehicle=theVheicle;
+    }
+
+     /**
+	
+	*this method returns the array of the seller
+
+	*<b>pre: </b> 
+	
+	*<b>post: return seller add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+
+
+    public Sellers[] getSeller(){
 
         return seller;
 
+
     }
+
+     /**
+	
+	*this method modifies the name of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: company name change
+	
+	*@param name != null
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+
+    
+
 
     public void setName(String name) {
 
-        this.name = name;
-
+        this.name=name;
+        
     }
 
-    public String getName() {
+     /**
+	
+	*this method returns the name of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: return name add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+    public String getName(){
 
         return name;
     }
 
+    /**
+	
+	*this method modifies the nit of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: customer nit changed
+	
+	*@param arraylist != null
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+
     public void setNit(String id) {
 
-        this.id = id;
-
+        this.id=id;
+        
     }
 
-    public String getNit() {
+    /**
+	
+	*this method returns the nit of the vehicles
+
+	*<b>pre: </b> 
+	
+	*<b>post: return nit add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+    
+
+    public String getNit(){
 
         return id;
     }
 
+    /**
+	
+	*this method modifies the total profist of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: customer total profist  changed
+	
+	*@param arraylist != null
+	
+	*@author Anderson Rueda.
+	
+	*/
+
     public void setTotalProfist(int totalProfist) {
 
-        this.totalProfist = totalProfist;
-
+        this.totalProfist=totalProfist;
+        
     }
 
-    public int getTotalProfist() {
+     /**
+	
+	*this method returns the total profist of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: return total profist add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+    public int getTotalProfist(){
 
         return totalProfist;
     }
 
+     /**
+	
+	*this method modifies the total sales of the company
+
+	*<b>pre: </b> 
+	
+	*<b>post: customer total sales changed
+	
+	*@param arraylist != null
+	
+	*@author Anderson Rueda.
+	
+	*/
+
     public void setTotalSales(int totalSales) {
 
-        this.totalSales = totalSales;
-
+        this.totalSales=totalSales;
+        
     }
 
-    public int getTotalSales() {
+     /**
+	
+	*this method returns the total sales of the vehicles
+
+	*<b>pre: </b> 
+	
+	*<b>post: return total sales add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
+
+    public int getTotalSales(){
 
         return totalSales;
     }
+
+     /**
+	
+	*this method returns the arraylist of the vehicles add for the clients
+
+	*<b>pre: </b> 
+	
+	*<b>post: return vehicle add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
 
     public ArrayList<Vehicle> getMyVehicleAdd() {
         return myVehicleAdd;
     }
 
+    /**
+	
+	*this method returns the arraylist of the vehicles add of the clients
+
+	*<b>pre: </b> 
+	
+	*<b>post: return arraylist add
+	
+	*@param
+	
+	*@author Anderson Rueda.
+	
+	*/
+
     public void setMyVehicleAdd(ArrayList<Vehicle> myVehicleAdd) {
         this.myVehicleAdd = myVehicleAdd;
     }
 
-    public ArrayList<Vehicle> getTheVehicle() {
-        return theVehicle;
-    }
 
-    public void setTheVehicle(ArrayList<Vehicle> theVehicle) {
-        this.theVehicle = theVehicle;
-    }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setSeller(Sellers[] seller) {
-        this.seller = seller;
-    }
 
 }

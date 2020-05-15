@@ -13,6 +13,9 @@ public class Main {
     ArrayList<Vehicle> theVehicle = new ArrayList<Vehicle>();
     ArrayList<Vehicle> myVehiclesAdd = new ArrayList<Vehicle>();
 
+    public int opt5;
+    public int select2;
+
     public Main() {
         myCompany = new Company("Car consesionaire S.A ", "123456789");
         welcomeMsg();
@@ -40,40 +43,44 @@ public class Main {
 
         int opt;
 
-        System.out.println(
-                "INGRESE UNA OPCION \n\n (1) agregar cliente (2) agregar vehiculo (3) ver registros (4) salir");
-        opt = r.nextInt();
+        do {
 
-        switch (opt) {
-            case 1:
+            System.out.println(
+                    "INGRESE UNA OPCION \n\n (1) agregar cliente (2) agregar vehiculo (3) ver registros (4) salir");
+            opt = r.nextInt();
 
-                init();
+            switch (opt) {
+                case 1:
 
-                break;
+                    init();
 
-            case 2:
+                    break;
 
-                addVehicle();
+                case 2:
 
-                break;
+                    addVehicle();
 
-            case 3:
+                    break;
 
-                genInforme();
+                case 3:
 
-                break;
+                    genInforme();
 
-            case 4:
-                System.out.println(
-                        "-----------------------gracias por utilizar nuestros servicios-------------------------------");
+                    break;
 
-                break;
+                case 4:
+                    System.out.println(
+                            "-----------------------gracias por utilizar nuestros servicios-------------------------------");
 
-        }
+                    break;
+
+            }
+
+        } while (opt != 4);
 
     }
 
-    public void asigVehiculo(ArrayList<Vehicle> myVehiclesAdd) {
+    public void asigVehiculo(ArrayList<Vehicle> theVehicle, Clients client) {
         int opt2;
 
         System.out.println(" ");
@@ -90,9 +97,9 @@ public class Main {
 
             case 1:
 
-                for (int i = 0; i < myCompany.getTheVehicle().size(); i++) {
+                for (int i = 0; i < myCompany.getMyVehicles().size(); i++) {
 
-                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
+                    Vehicle myVehicle = myCompany.getMyVehicles().get(i);
 
                     if (myVehicle instanceof Motorcicle) {
 
@@ -116,17 +123,16 @@ public class Main {
 
                 int opt3 = r.nextInt();
 
-                myVehiclesAdd.add(myCompany.getTheVehicle().get(opt3));
-                r.nextLine();
+                client.addMyVehicle(myCompany.getMyVehicles().get(opt3));
 
-                System.out.println("");
+                System.out.println(" ");
 
                 System.out.println("desea agregar otro vehiculo ?");
                 String answer = r.nextLine();
 
                 if (answer.equalsIgnoreCase("si")) {
 
-                    asigVehiculo(myVehiclesAdd);
+                    asigVehiculo(myVehiclesAdd, client);
 
                 }
 
@@ -134,11 +140,13 @@ public class Main {
 
             case 2:
 
+
+
                 System.out.println("");
 
-                for (int i = 0; i < myCompany.getTheVehicle().size(); i++) {
+                for (int i = 0; i < myCompany.getMyVehicles().size(); i++) {
 
-                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
+                    Vehicle myVehicle = myCompany.getMyVehicles().get(i);
 
                     if (myVehicle instanceof Car) {
 
@@ -146,18 +154,17 @@ public class Main {
 
                         System.out.println("Carro # " + i);
                         System.out.println("Marca: " + car.getBran());
-                        System.out.println(":tipo de carro " + car.getType());
                         System.out.println("Modelo :" + car.getModel());
-                        System.out.println("tipo de carro :" + car.getTypeOfCar());
                         System.out.println("Precio Base: " + car.getBasePrice());
                         System.out.println("Cilindraje: " + car.getDisplacement());
                         System.out.println("Placa: " + car.getPlate());
                         System.out.println("Vehiculo usado?: " + car.getNew());
                         System.out.println("Numero de puertas: " + car.getDoors());
                         System.out.println("Ventanas polarizadas: " + car.getPolarized());
-                        System.out.println("Tipo de combustible: " + car.getTypeOfCar());
+                        System.out.println("Tipo de carro: " + car.getType());
                         System.out.println("El precio total es: " + car.getTotalPrice());
                         System.out.println(" ");
+
 
                     }
 
@@ -166,9 +173,8 @@ public class Main {
                 System.out.println("INGRESE EL NUMERO DEL VEHICULO EL CUAL DESEA ASIGNAR");
 
                 int opt4 = r.nextInt();
-                r.nextLine();
 
-                myVehiclesAdd.add(myCompany.getTheVehicle().get(opt4));
+                client.addMyVehicle(myCompany.getMyVehicles().get(opt4));
                 r.nextLine();
 
                 System.out.println("");
@@ -178,13 +184,19 @@ public class Main {
 
                 if (answer2.equalsIgnoreCase("si")) {
 
-                    asigVehiculo(myVehiclesAdd);
+                    asigVehiculo(myVehiclesAdd,client);
+
+
 
                 }
 
                 break;
 
         }
+
+    }
+
+    public void interestedVehicle() {
 
     }
 
@@ -249,7 +261,7 @@ public class Main {
 
                     theVehicle.add(cars);
 
-                    Vehicle myVehicle = myCompany.getTheVehicle().get(i);
+                    Vehicle myVehicle = myCompany.getMyVehicles().get(i);
 
                     if (myVehicle instanceof Car) {
 
@@ -315,7 +327,7 @@ public class Main {
 
                     theVehicle.add(motorcycles);
 
-                        Vehicle myVehicle1 = myCompany.getTheVehicle().get(i);
+                        Vehicle myVehicle1 = myCompany.getMyVehicles().get(i);
 
                         if (myVehicle1 instanceof Motorcicle) {
 
@@ -359,7 +371,7 @@ public class Main {
 
         Clients client = new Clients(name, lastName, id, phoneNumber);
 
-        asigVehiculo(client.getTheVehicle());
+        asigVehiculo(theVehicle,client);
 
         System.out.println("SELECCIONE EL NUMERO DEL VENDEDOR QUE LO ATENDIO");
 
@@ -383,7 +395,7 @@ public class Main {
         if (myCompany.getSeller()[select].canClients()) {
             myCompany.getSeller()[select].addClient(client);
         } else {
-            System.out.println("este vendedor ya tiene su cupo maximo de clientes");
+            System.out.println("Este vendedor no puede tener más clientes, seleccione otro");
             sSeller(client);
         }
 
@@ -396,7 +408,7 @@ public class Main {
 
         System.out.println("EL VENDEDOR QUE LO ATENDIO ES: ");
 
-        for (int i = 0; i < myCompany.getSeller()[i].getMisClients().size(); i++) {
+        for (int i = 0; i < myCompany.getSeller().length; i++) {
 
             Sellers mySeller = myCompany.getSeller()[i];
 
@@ -411,9 +423,9 @@ public class Main {
 
                 for (int j = 0; j < mySeller.getMisClients().size(); j++) {
 
-                    Clients client = mySeller.getMisClients().get(i);
+                    Clients client = mySeller.getMisClients().get(j);
 
-                    System.out.println("client # " + i);
+                    System.out.println("client # " + j);
                     System.out.println("Nombre: " + client.getName());
                     System.out.println("Apellido :" + client.getLastName());
                     System.out.println("ID: " + client.getId());
@@ -421,17 +433,16 @@ public class Main {
                     System.out.println(" ");
                     System.out.println("EL VEHICULO ES:");
 
-                    for (int z = 0; z < client.getTheVehicle().size(); z++) {
+                    for (int z = 0; z < client.getVehicles().size(); z++) {
 
-                        Vehicle myVehicle = client.getTheVehicle().get(i);
+                        Vehicle myVehicle = client.getVehicles().get(z);
 
                         if (myVehicle instanceof Car) {
 
                             Car car = (Car) myVehicle;
 
-                            System.out.println("Carro # " + i);
+                            System.out.println("Carro # " + z);
                             System.out.println("Marca: " + car.getBran());
-                            System.out.println(":tipo de carro " + car.getType());
                             System.out.println("Modelo :" + car.getModel());
                             System.out.println("Precio Base: " + car.getBasePrice());
                             System.out.println("Cilindraje: " + car.getDisplacement());
@@ -439,7 +450,7 @@ public class Main {
                             System.out.println("Vehiculo usado?: " + car.getNew());
                             System.out.println("Numero de puertas: " + car.getDoors());
                             System.out.println("Ventanas polarizadas: " + car.getPolarized());
-                            System.out.println("Tipo de combustible: " + car.getTypeOfCar());
+                            System.out.println("Tipo de carro: " + car.getType());
                             System.out.println("El precio total es: " + car.getTotalPrice());
                             System.out.println("");
 
@@ -461,7 +472,7 @@ public class Main {
 
                             Motorcicle motorcicle = (Motorcicle) myVehicle;
 
-                            System.out.println("Motorcycle # " + i);
+                            System.out.println("Motorcycle # " + z);
                             System.out.println("Marca: " + motorcicle.getBran());
                             System.out.println("Modelo :" + motorcicle.getModel());
                             System.out.println("Precio Base: " + motorcicle.getBasePrice());
@@ -484,12 +495,16 @@ public class Main {
 
                         }
 
+
+
                     }
 
                 }
 
             }
+
         }
+
     }
 
 }
